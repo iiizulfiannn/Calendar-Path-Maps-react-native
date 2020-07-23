@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {Header, ListDate, ListTime} from '../components';
 
 const WeeklyCalendar = ({navigation}) => {

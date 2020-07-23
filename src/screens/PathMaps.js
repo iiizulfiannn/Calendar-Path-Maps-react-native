@@ -1,9 +1,8 @@
 import React from 'react';
-import {StyleSheet, Image, View} from 'react-native';
-import MapView, {PROVIDER_GOOGLE, Marker, Polyline} from 'react-native-maps';
+import {StyleSheet, View} from 'react-native';
+import MapView, {Marker, Polyline, PROVIDER_GOOGLE} from 'react-native-maps';
 import IconOrigin from 'react-native-vector-icons/FontAwesome5';
 import IconDestination from 'react-native-vector-icons/Fontisto';
-
 import {Header} from '../components';
 
 const PathMaps = ({navigation}) => {
