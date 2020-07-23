@@ -1,25 +1,21 @@
 import React from 'react';
 import {StyleSheet, Image, View} from 'react-native';
-import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker, Polyline} from 'react-native-maps';
 import IconOrigin from 'react-native-vector-icons/FontAwesome5';
 import IconDestination from 'react-native-vector-icons/Fontisto';
-import MapDirections from 'react-native-maps-directions';
 
 import {Header} from '../components';
 
 const PathMaps = ({navigation}) => {
   const coordOrigin = {
-    latitude: -0.0162365,
-    longitude: 109.3157993,
+    latitude: -0.017417,
+    longitude: 109.310531,
   };
 
   const coordDestination = {
     latitude: -0.0080209,
     longitude: 109.3101039,
   };
-
-  // not yet: DotEnv
-  const API_KEYS = 'AIzaSyCNgXt9OKU9IW-2nwp6M6dop7rwfT4uCcI';
 
   return (
     <>
@@ -44,22 +40,22 @@ const PathMaps = ({navigation}) => {
           <Marker coordinate={coordDestination}>
             <IconDestination name="flag" color="black" size={30} />
           </Marker>
-          <MapDirections
-            origin={coordOrigin}
-            destination={coordDestination}
-            apikey={API_KEYS}
-            strokeWidth={3}
-            strokeColor={[
-              '#7F0000',
-              'dodgerblue',
-              '#B24112',
-              '#E5845C',
-              '#238C23',
-              '#7F0000',
+          <Polyline
+            coordinates={[
+              coordOrigin,
+              {latitude: -0.017942, longitude: 109.309077},
+              {latitude: -0.017827, longitude: 109.308807},
+              {latitude: -0.017289, longitude: 109.308824},
+              {latitude: -0.014205, longitude: 109.309004},
+              {latitude: -0.01315, longitude: 109.30908},
+              {latitude: -0.011783, longitude: 109.309295},
+              {latitude: -0.009463, longitude: 109.309984},
+              {latitude: -0.008124, longitude: 109.310436},
+              coordDestination,
             ]}
-            onError={(errorMessage) => {
-              console.log(errorMessage);
-            }}
+            strokeColor="#3498db"
+            strokeWidth={6}
+            lineJoin="round"
           />
         </MapView>
       </View>
