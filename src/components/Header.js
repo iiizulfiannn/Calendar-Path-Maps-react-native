@@ -1,6 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import IconBack from 'react-native-vector-icons/AntDesign';
+import LinearGradient from 'react-native-linear-gradient';
+import {gradient} from '../utils/colors';
 
 const Header = ({type, title, onPress}) => {
   const Icon = () => {
@@ -10,7 +12,7 @@ const Header = ({type, title, onPress}) => {
           <IconBack
             name="arrowleft"
             size={26}
-            color="black"
+            color="white"
             onPress={onPress}
           />
         </TouchableOpacity>
@@ -19,10 +21,14 @@ const Header = ({type, title, onPress}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={gradient}
+      start={{x: 0, y: 0.5}}
+      end={{x: 1, y: 0.5}}
+      style={styles.container}>
       {type && <Icon />}
       <Text style={styles.text}>{title}</Text>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -39,7 +45,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 22,
-    color: 'black',
+    color: 'white',
   },
   icon: {
     paddingRight: 25,

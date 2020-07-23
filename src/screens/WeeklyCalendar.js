@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {Header, ListDate, ListTime} from '../components';
+import LinearGradient from 'react-native-linear-gradient';
+import {gradient} from '../utils/colors';
 
 const WeeklyCalendar = ({navigation}) => {
   const [data, setData] = useState([]);
@@ -44,7 +52,11 @@ const WeeklyCalendar = ({navigation}) => {
         onPress={() => navigation.goBack()}
       />
       <View style={styles.container}>
-        <View style={styles.containerDate}>
+        <LinearGradient
+          colors={gradient}
+          start={{x: 0, y: 0.5}}
+          end={{x: 1, y: 0.5}}
+          style={styles.containerDate}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <ListDate day="Tomorrow" month="Aug" date="19" />
             <ListDate day="Mon" month="Aug" date="20" />
@@ -54,12 +66,23 @@ const WeeklyCalendar = ({navigation}) => {
             <ListDate day="Fri" month="Aug" date="24" />
             <ListDate day="Sat" month="Aug" date="25" />
           </ScrollView>
-        </View>
+        </LinearGradient>
         <View style={styles.containerTime}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {displayListItem}
           </ScrollView>
         </View>
+      </View>
+      <View style={styles.footer}>
+        <TouchableOpacity onPress={() => navigation.navigate('PathMaps')}>
+          <LinearGradient
+            colors={gradient}
+            start={{x: 0, y: 0.5}}
+            end={{x: 1, y: 0.5}}
+            style={styles.btn}>
+            <Text style={styles.text}>Choose Location</Text>
+          </LinearGradient>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -82,5 +105,27 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#efefef',
+  },
+  footer: {
+    height: 65,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+  btn: {
+    width: 250,
+    height: 40,
+    borderRadius: 20 / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 20,
+    color: 'white',
   },
 });
